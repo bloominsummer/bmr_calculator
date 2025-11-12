@@ -62,18 +62,15 @@ class Calculator {
     return tdee * 1.15; // tambah 15% dari kebutuhan kalori harian
   }
 
-  /// Interpretasi hasil seperti contohmu
+  /// Interpretasi hasil seperti contoh
   String getInterpretation(ActivityLevel activityLevel) {
     double tdee = calculateTDEE(activityLevel);
     double lose = caloriesForWeightLoss(tdee);
     double defisit = tdee - lose;
 
     return '''
-    Kebutuhan kalori harian kamu adalah ${tdee.toStringAsFixed(0)} kkal/hari.
-    Jika kamu ingin menurunkan berat badan, kamu membutuhkan ${lose.toStringAsFixed(0)} kkal/hari.
-
-    Tubuh kamu membakar ${bmr.toStringAsFixed(0)} kkal/hari untuk tetap hidup.
-    Jadi, setiap hari kamu perlu membakar ${defisit.toStringAsFixed(0)} kkal/hari untuk menurunkan berat badan secara sehat.
+    Kebutuhan kalori harian kamu adalah ${tdee.toStringAsFixed(0)} kkal/hari. Jika kamu ingin menurunkan berat badan, kamu membutuhkan ${lose.toStringAsFixed(0)} kkal/hari.
+    Tubuh kamu membakar ${bmr.toStringAsFixed(0)} kkal/hari untuk tetap hidup. Jadi, setiap hari kamu perlu membakar ${defisit.toStringAsFixed(0)} kkal/hari untuk menurunkan berat badan secara sehat.
     ''';
   }
 }

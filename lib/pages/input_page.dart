@@ -36,8 +36,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     color: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? const Color.fromARGB(255, 173, 207, 255)
+                        : const Color.fromARGB(255, 242, 241, 243),
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.mars,
                       caption: 'LAKI -LAKI',
@@ -52,8 +52,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     color: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? const Color.fromARGB(255, 173, 207, 255)
+                        : const Color.fromARGB(255, 242, 241, 243),
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.venus,
                       caption: 'PEREMPUAN',
@@ -189,27 +189,27 @@ class _InputPageState extends State<InputPage> {
                   const SizedBox(height: 10),
                   DropdownButton<ActivityLevel>(
                     value: activityLevel,
-                    dropdownColor: activeCardColor,
+                    dropdownColor: const Color.fromARGB(255, 173, 207, 255),
                     items: const [
                       DropdownMenuItem(
                         value: ActivityLevel.sedentary,
-                        child: Text('Aktivitas minimal'),
+                        child: Text('Aktivitas minimal', style: TextStyle(color: Color(0xFFE45EAB)),),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.light,
-                        child: Text('Aktivitas ringan'),
+                        child: Text('Aktivitas ringan', style: TextStyle(color: Color(0xFFE45EAB)),),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.moderate,
-                        child: Text('Aktivitas menengah'),
+                        child: Text('Aktivitas menengah', style: TextStyle(color: Color(0xFFE45EAB)),),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.active,
-                        child: Text('Aktivitas berat'),
+                        child: Text('Aktivitas berat', style: TextStyle(color: Color(0xFFE45EAB)),),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.veryActive,
-                        child: Text('Pekerja fisik'),
+                        child: Text('Pekerja fisik', style: TextStyle(color: Color(0xFFE45EAB)),),
                       ),
                     ],
                     onChanged: (value) {
@@ -242,7 +242,7 @@ class _InputPageState extends State<InputPage> {
                     builder: (context) => ResultPage(
                       result: result,
                       information: information,
-                      bmr: '',
+                     
                     ),
                   ),
                 );

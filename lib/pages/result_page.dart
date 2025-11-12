@@ -7,10 +7,9 @@ class ResultPage extends StatelessWidget {
   const ResultPage({super.key, 
     required this.result,
     required this.information,
-    required this.bmr});
+});
 
   final String result;
-  final String bmr;
   final String information;
 
 
@@ -26,11 +25,12 @@ class ResultPage extends StatelessWidget {
         children: [
           Expanded(child: Container(
             padding: const EdgeInsets.all(15.0),
-            alignment: Alignment.bottomLeft,
+            alignment: Alignment.bottomCenter,
             child: const Text(
-              'Your Result',
+              'HASIL',
               style: TextStyle(
-                fontSize: 50.0,
+                fontSize: 30.0,
+                
                 fontWeight: FontWeight.bold,
               ),),
             ),
@@ -44,20 +44,17 @@ class ResultPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    result,
+                    '$result kkal',
                     style: resultTextStyle,
                   ),
-                  Text(
-                    bmr,
-                    style: bmrTextStyle,
-                  ),
+                  
                   Text(
                     information,
+                    style: informationTextStyle,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 22.0,
+                  
                     ),
-                  )
+                  
                 ],
               ),
             ),

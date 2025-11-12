@@ -25,7 +25,7 @@ const labelTextStyle = TextStyle(
 
 const numberTextStyle = TextStyle(
   fontSize: 45.0,
-  color: Color.fromARGB(255, 44, 131, 174),
+  color: Colors.blueAccent,
   fontWeight: FontWeight.w900,
 );
 
@@ -35,11 +35,15 @@ const buttonTextStyle = TextStyle(
 );
 
 const resultTextStyle = TextStyle(
-  color: Color(0xFF169D53),
-  fontSize: 22,
+  color: Color.fromARGB(255, 169, 11, 98),
+  fontSize: 30,
   fontWeight: FontWeight.bold,
 );
 
+const informationTextStyle = TextStyle(
+  color: Color.fromARGB(255, 11, 11, 11),
+  fontSize: 22,
+);
 const bmrTextStyle = TextStyle(
   fontSize: 100,
   fontWeight: FontWeight.bold,
