@@ -12,8 +12,8 @@ class CustomCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        margin: const EdgeInsets.all(15.0),
-        padding: const EdgeInsets.only(left: 1.0, right: 1.0),
+        margin: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(25.0),

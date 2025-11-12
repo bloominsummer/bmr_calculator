@@ -18,7 +18,7 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BMR CALCULATOR'),
+        title: const Text('KALKULATOR BMR'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -63,7 +63,7 @@ class ResultPage extends StatelessWidget {
             ),
           ),
           BottomButton(
-            buttonTitle: 'RE-CALCULATE',
+            buttonTitle: 'HITUNG ULANG',
             onTap: (){
               Navigator.pop(context);
             }),

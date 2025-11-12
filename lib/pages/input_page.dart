@@ -25,7 +25,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('BMR CALCULATOR')),
+      appBar: AppBar(title: const Text('KALKULATOR BMR')),
       body: SingleChildScrollView( // supaya tidak overflow
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,7 +40,7 @@ class _InputPageState extends State<InputPage> {
                         : inactiveCardColor,
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.mars,
-                      caption: 'MALE',
+                      caption: 'LAKI -LAKI',
                     ),
                     onPress: () {
                       setState(() {
@@ -56,7 +56,7 @@ class _InputPageState extends State<InputPage> {
                         : inactiveCardColor,
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.venus,
-                      caption: 'FEMALE',
+                      caption: 'PEREMPUAN',
                     ),
                     onPress: () {
                       setState(() {
@@ -74,7 +74,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('AGE', style: labelTextStyle),
+                  const Text('UMUR', style: labelTextStyle),
                   Text(age.toString(), style: numberTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -108,7 +108,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('HEIGHT', style: labelTextStyle),
+                  const Text('TINGGI BADAN', style: labelTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -151,7 +151,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('WEIGHT', style: labelTextStyle),
+                  const Text('BERAT BADAN', style: labelTextStyle),
                   Text(weight.toString(), style: numberTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -185,7 +185,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('ACTIVITY LEVEL', style: labelTextStyle),
+                  const Text('TINGKAT AKTIVITAS', style: labelTextStyle),
                   const SizedBox(height: 10),
                   DropdownButton<ActivityLevel>(
                     value: activityLevel,
@@ -224,7 +224,7 @@ class _InputPageState extends State<InputPage> {
 
             /// CALCULATE BUTTON
             BottomButton(
-              buttonTitle: 'CALCULATE',
+              buttonTitle: 'HITUNG',
               onTap: () {
                 Calculator cal = Calculator(
                   height: height,

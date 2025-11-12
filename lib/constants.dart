@@ -25,6 +25,7 @@ const labelTextStyle = TextStyle(
 
 const numberTextStyle = TextStyle(
   fontSize: 45.0,
+  color: Color.fromARGB(255, 44, 131, 174),
   fontWeight: FontWeight.w900,
 );
 
