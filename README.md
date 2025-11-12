@@ -32,3 +32,9 @@ Aplikasi Flutter sederhana untuk menghitung **BMR (Basal Metabolic Rate)** dan *
 - Google Fonts  
 
 ---
+
+## Pengembang
+
+- Alfia Nur Ihsani (K3523009) 
+- Arina Al Haq (K3523019)
+- Asshyari Intan P. N. (K3523021) 
