@@ -1,16 +1,34 @@
-# bmr_calculator
+# BMR Calculator
 
-A new Flutter project.
+Aplikasi Flutter sederhana untuk menghitung **BMR (Basal Metabolic Rate)** dan **TDEE (Total Daily Energy Expenditure)** berdasarkan data pengguna seperti usia, berat badan, tinggi badan, jenis kelamin, serta tingkat aktivitas harian.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Tampilan Aplikasi
 
-A few resources to get you started if this is your first Flutter project:
+| Input Page | Result Page |
+|-------------|--------------|
+| ![Input Page](assets/input_page.jpg) | ![Result Page](assets/result_page.jpg) |
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Fitur Utama
+
+- Menghitung **BMR** menggunakan rumus **Mifflin-St Jeor**  
+- Menentukan **TDEE** berdasarkan tingkat aktivitas  
+- Menampilkan rekomendasi kalori untuk:
+  - Menurunkan berat badan  
+  - Menjaga berat badan  
+  - Menaikkan berat badan  
+
+---
+
+## Teknologi yang Digunakan
+
+- Flutter  
+- Dart  
+- Material Design  
+- Font Awesome Icons 
+- Google Fonts  
+
+---
