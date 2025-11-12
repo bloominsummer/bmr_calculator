@@ -1,3 +1,4 @@
+import 'package:bmr_calculator/pages/input_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

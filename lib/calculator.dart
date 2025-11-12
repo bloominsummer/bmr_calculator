@@ -1,4 +1,4 @@
-import 'dart:math';
+//import 'dart:math';
 import 'constants.dart';
 
 class Calculator {
@@ -17,16 +17,16 @@ class Calculator {
   final int age;
   final ActivityLevel activityLevel;
 
-  double _bmr = 0.0;
+  double bmr = 0.0;
 
   /// Hitung BMR menggunakan rumus Mifflin-St Jeor
   String calculateBMR(){
     if (gender == Gender.male){
-      _bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+      bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
     } else {
-      _bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+      bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
     }
-    return _bmr.toStringAsFixed(0);
+    return bmr.toStringAsFixed(0);
   }
 
   /// Hitung TDEE berdasarkan tingkat aktivitas
@@ -49,7 +49,7 @@ class Calculator {
         factor = 1.9;
         break;
     }
-    return _bmr * factor;
+    return bmr * factor;
   }
 
   /// Rekomendasi kalori harian untuk menurunkan berat badan
@@ -63,8 +63,8 @@ class Calculator {
   }
 
   /// Interpretasi hasil seperti contohmu
-  String getInterpretation(ActivityLevel level) {
-    double tdee = calculateTDEE(level);
+  String getInterpretation(ActivityLevel activityLevel) {
+    double tdee = calculateTDEE(activityLevel);
     double lose = caloriesForWeightLoss(tdee);
     double defisit = tdee - lose;
 
@@ -72,7 +72,7 @@ class Calculator {
     Kebutuhan kalori harian kamu adalah ${tdee.toStringAsFixed(0)} kkal/hari.
     Jika kamu ingin menurunkan berat badan, kamu membutuhkan ${lose.toStringAsFixed(0)} kkal/hari.
 
-    Tubuh kamu membakar ${_bmr.toStringAsFixed(0)} kkal/hari untuk tetap hidup.
+    Tubuh kamu membakar ${bmr.toStringAsFixed(0)} kkal/hari untuk tetap hidup.
     Jadi, setiap hari kamu perlu membakar ${defisit.toStringAsFixed(0)} kkal/hari untuk menurunkan berat badan secara sehat.
     ''';
   }
