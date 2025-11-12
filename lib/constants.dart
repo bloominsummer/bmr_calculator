@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+/// Warna dan ukuran
 const activeCardColor = Color(0xFFF6F2FF);
-const inactiveCardColor = Color(0xFFC4B2E2);
+const inactiveCardColor = Color.fromARGB(255, 173, 207, 255);
 const bottomContainerHeight = 80.0;
 const bottomContainerColor = Color(0xFFE45EAB);
 
+/// Enum untuk jenis kelamin
 enum Gender {
   male,
   female,
 }
 
+/// Enum untuk tingkat aktivitas harian
 enum ActivityLevel {
   sedentary,    // Tidak aktif alias rebahan mulu
   light,        // 1-3x olahraga/minggu
@@ -18,33 +22,43 @@ enum ActivityLevel {
   veryActive,   // Aktivitas berat setiap hari
 }
 
-const labelTextStyle = TextStyle(
+/// Gaya Teks
+/// labelTextStyle: label tiap cards
+final labelTextStyle = GoogleFonts.inter(
   fontSize: 18.0,
   color: Color(0xFFA64377),
+  fontWeight: FontWeight.bold
 );
 
-const numberTextStyle = TextStyle(
+/// numberTextStyle: untuk angka besar spt berat, tinggi, umur
+final numberTextStyle = GoogleFonts.inter(
   fontSize: 45.0,
   color: Colors.blueAccent,
   fontWeight: FontWeight.w900,
 );
 
-const buttonTextStyle = TextStyle(
+/// buttonTextStyle: teks button
+final buttonTextStyle = GoogleFonts.inter(
   fontSize: 25,
   fontWeight: FontWeight.bold,
 );
 
-const resultTextStyle = TextStyle(
+/// resultTextStyle: angka hasil BMR/TDEE di laman result
+final resultTextStyle = GoogleFonts.inter(
   color: Color.fromARGB(255, 169, 11, 98),
-  fontSize: 30,
+  fontSize: 45,
   fontWeight: FontWeight.bold,
 );
 
-const informationTextStyle = TextStyle(
-  color: Color.fromARGB(255, 11, 11, 11),
-  fontSize: 22,
+/// informationTextStyle: teks penjelasan hasil BMR/TDEE di laman result
+final informationTextStyle = GoogleFonts.inter(
+  color: Colors.black,
+  fontSize: 14,
 );
-const bmrTextStyle = TextStyle(
-  fontSize: 100,
-  fontWeight: FontWeight.bold,
+
+/// dropdownTextStyle: teks pada item dropdown tingkat aktivitas
+final dropdownTextStyle = GoogleFonts.inter(
+  color: Color(0xFFE45EAB),
+  fontSize: 14,
+  fontWeight: FontWeight.w500
 );

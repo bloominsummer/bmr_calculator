@@ -5,6 +5,7 @@ void main() {
   runApp(const MyApp());
 }
 
+/// Bersifat stateless karena tidak memiliki data yang berubah-ubah.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -12,16 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /// Tema aplikasi
       theme: ThemeData.dark().copyWith(
-        primaryColor: const Color(0xFF0A0E21),
-        scaffoldBackgroundColor: const Color(0xFF0A0E21),
+        primaryColor: const Color.fromARGB(255, 173, 207, 255),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 173, 207, 255),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF0A0E21),
+          backgroundColor:  Color.fromARGB(255, 173, 207, 255),
           centerTitle: true,
           elevation: 0.0,
         ),
-      ), 
-      home: InputPage(),
+      ),
+      debugShowCheckedModeBanner: false, 
+      home: InputPage(),    /// Halaman utama yg ditampilkan
     );
   }
 }

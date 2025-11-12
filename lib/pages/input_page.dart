@@ -7,6 +7,7 @@ import 'package:bmr_calculator/constants.dart';
 import 'package:bmr_calculator/pages/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -25,22 +26,33 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('KALKULATOR BMR')),
-      body: SingleChildScrollView( // supaya tidak overflow
+      appBar: AppBar(
+        title: Text(
+          'KALKULATOR BMR',
+          style: GoogleFonts.inter(
+            color: Color(0xFFA64377),
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        elevation: 2,
+        shadowColor: Colors.black,
+      ),
+
+      body: SingleChildScrollView(  // supaya tidak overflow dan bisa scroll
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            /// GENDER
+            /// =====GENDER=====
             Row(
               children: [
                 Expanded(
                   child: CustomCard(
                     color: selectedGender == Gender.male
-                        ? const Color.fromARGB(255, 173, 207, 255)
-                        : const Color.fromARGB(255, 242, 241, 243),
+                        ? activeCardColor
+                        : inactiveCardColor,
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.mars,
-                      caption: 'LAKI -LAKI',
+                      caption: 'LAKI-LAKI',
                     ),
                     onPress: () {
                       setState(() {
@@ -52,8 +64,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: CustomCard(
                     color: selectedGender == Gender.female
-                        ? const Color.fromARGB(255, 173, 207, 255)
-                        : const Color.fromARGB(255, 242, 241, 243),
+                        ? activeCardColor
+                        : inactiveCardColor,
                     cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.venus,
                       caption: 'PEREMPUAN',
@@ -68,13 +80,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
 
-            /// AGE
+            /// =====UMUR=====
             CustomCard(
               color: activeCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('UMUR', style: labelTextStyle),
+                  Text('UMUR', style: labelTextStyle),
                   Text(age.toString(), style: numberTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -102,27 +114,27 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
 
-            /// HEIGHT
+            /// =====TINGGI BADAN=====
             CustomCard(
               color: activeCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('TINGGI BADAN', style: labelTextStyle),
+                  Text('TINGGI BADAN', style: labelTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(height.toString(), style: numberTextStyle),
-                      const Text('cm', style: labelTextStyle),
+                      Text('cm', style: labelTextStyle),
                     ],
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.black,
+                      activeTrackColor: Color(0xFFE45EAB),
                       inactiveTrackColor: const Color(0xFF80798C),
-                      thumbColor: const Color(0xFFE45EAB),
+                      thumbColor: const Color(0xFFA64377),
                       thumbShape: const RoundSliderThumbShape(
                         enabledThumbRadius: 15.0,
                       ),
@@ -145,13 +157,13 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
 
-            /// WEIGHT
+            /// =====BERAT BADAN=====
             CustomCard(
               color: activeCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('BERAT BADAN', style: labelTextStyle),
+                  Text('BERAT BADAN', style: labelTextStyle),
                   Text(weight.toString(), style: numberTextStyle),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -179,37 +191,56 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
 
-            /// ACTIVITY LEVEL DROPDOWN
+            /// =====DROPDOWN TINGKAT AKTIVITAS=====
             CustomCard(
               color: activeCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('TINGKAT AKTIVITAS', style: labelTextStyle),
+                  Text('TINGKAT AKTIVITAS', style: labelTextStyle),
                   const SizedBox(height: 10),
                   DropdownButton<ActivityLevel>(
                     value: activityLevel,
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Color(0xFFE45EAB),
+                    ),
                     dropdownColor: const Color.fromARGB(255, 173, 207, 255),
-                    items: const [
+                    items: [
                       DropdownMenuItem(
                         value: ActivityLevel.sedentary,
-                        child: Text('Aktivitas minimal', style: TextStyle(color: Color(0xFFE45EAB)),),
+                        child: Text(
+                          'Aktivitas minimal, Suka rebahan',
+                          style: dropdownTextStyle,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.light,
-                        child: Text('Aktivitas ringan', style: TextStyle(color: Color(0xFFE45EAB)),),
+                        child: Text(
+                          'Aktivitas ringan, Olahraga 1-3 kali/minggu',
+                          style: dropdownTextStyle,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.moderate,
-                        child: Text('Aktivitas menengah', style: TextStyle(color: Color(0xFFE45EAB)),),
+                        child: Text(
+                          'Aktivitas menengah, Olahraga 3-5 kali/minggu',
+                          style: dropdownTextStyle,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.active,
-                        child: Text('Aktivitas berat', style: TextStyle(color: Color(0xFFE45EAB)),),
+                        child: Text(
+                          'Aktivitas berat, Olahraga 6-7 kali/minggu',
+                          style: dropdownTextStyle,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: ActivityLevel.veryActive,
-                        child: Text('Pekerja fisik', style: TextStyle(color: Color(0xFFE45EAB)),),
+                        child: Text(
+                          'Pekerja fisik, Olahraga 2',
+                          style: dropdownTextStyle,
+                        ),
                       ),
                     ],
                     onChanged: (value) {
@@ -222,7 +253,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
 
-            /// CALCULATE BUTTON
+            /// =====BUTTON HITUNG=====
             BottomButton(
               buttonTitle: 'HITUNG',
               onTap: () {
@@ -233,17 +264,16 @@ class _InputPageState extends State<InputPage> {
                   age: age,
                   activityLevel: activityLevel,
                 );
-                String result = cal.calculateBMR();
+                cal.calculateBMR();
+                double result = cal.calculateTDEE(activityLevel);
                 String information = cal.getInterpretation(activityLevel);
 
+                // Navigasi ke halaman result
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultPage(
-                      result: result,
-                      information: information,
-                     
-                    ),
+                    builder: (context) =>
+                        ResultPage(result: result.toStringAsFixed(0), information: information),
                   ),
                 );
               },
