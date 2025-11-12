@@ -26,18 +26,19 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('BMR CALCULATOR')),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Row(
+      body: SingleChildScrollView( // supaya tidak overflow
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            /// GENDER
+            Row(
               children: [
                 Expanded(
                   child: CustomCard(
                     color: selectedGender == Gender.male
                         ? activeCardColor
                         : inactiveCardColor,
-                    cardChild: IconCard(
+                    cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.mars,
                       caption: 'MALE',
                     ),
@@ -53,7 +54,7 @@ class _InputPageState extends State<InputPage> {
                     color: selectedGender == Gender.female
                         ? activeCardColor
                         : inactiveCardColor,
-                    cardChild: IconCard(
+                    cardChild: const IconCard(
                       cardIcon: FontAwesomeIcons.venus,
                       caption: 'FEMALE',
                     ),
@@ -66,9 +67,43 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
-          ),
-          Expanded(
-            child: CustomCard(
+
+            /// AGE
+            CustomCard(
+              color: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('AGE', style: labelTextStyle),
+                  Text(age.toString(), style: numberTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundIconButton(
+                        icon: FontAwesomeIcons.minus,
+                        onPressed: () {
+                          setState(() {
+                            if (age > 1) age--;
+                          });
+                        },
+                      ),
+                      const SizedBox(width: 10.0),
+                      RoundIconButton(
+                        icon: FontAwesomeIcons.plus,
+                        onPressed: () {
+                          setState(() {
+                            age++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            /// HEIGHT
+            CustomCard(
               color: activeCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,13 +115,13 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(height.toString(), style: numberTextStyle),
-                      Text('cm', style: labelTextStyle),
+                      const Text('cm', style: labelTextStyle),
                     ],
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       activeTrackColor: Colors.black,
-                      inactiveTickMarkColor: const Color(0xFF80798C),
+                      inactiveTrackColor: const Color(0xFF80798C),
                       thumbColor: const Color(0xFFE45EAB),
                       thumbShape: const RoundSliderThumbShape(
                         enabledThumbRadius: 15.0,
@@ -109,80 +144,112 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: CustomCard(
-                    color: activeCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('WEIGHT', style: labelTextStyle),
-                        Text(weight.toString(), style: numberTextStyle),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(() {
-                                  if (weight >= 30) {
-                                    weight--;
-                                  }
-                                });
-                              },
-                            ),
-                            const SizedBox(width: 10.0),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+
+            /// WEIGHT
+            CustomCard(
+              color: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('WEIGHT', style: labelTextStyle),
+                  Text(weight.toString(), style: numberTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundIconButton(
+                        icon: FontAwesomeIcons.minus,
+                        onPressed: () {
+                          setState(() {
+                            if (weight > 30) weight--;
+                          });
+                        },
+                      ),
+                      const SizedBox(width: 10.0),
+                      RoundIconButton(
+                        icon: FontAwesomeIcons.plus,
+                        onPressed: () {
+                          setState(() {
+                            weight++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            /// ACTIVITY LEVEL DROPDOWN
+            CustomCard(
+              color: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('ACTIVITY LEVEL', style: labelTextStyle),
+                  const SizedBox(height: 10),
+                  DropdownButton<ActivityLevel>(
+                    value: activityLevel,
+                    dropdownColor: activeCardColor,
+                    items: const [
+                      DropdownMenuItem(
+                        value: ActivityLevel.sedentary,
+                        child: Text('Aktivitas minimal'),
+                      ),
+                      DropdownMenuItem(
+                        value: ActivityLevel.light,
+                        child: Text('Aktivitas ringan'),
+                      ),
+                      DropdownMenuItem(
+                        value: ActivityLevel.moderate,
+                        child: Text('Aktivitas menengah'),
+                      ),
+                      DropdownMenuItem(
+                        value: ActivityLevel.active,
+                        child: Text('Aktivitas berat'),
+                      ),
+                      DropdownMenuItem(
+                        value: ActivityLevel.veryActive,
+                        child: Text('Pekerja fisik'),
+                      ),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        activityLevel = value!;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            /// CALCULATE BUTTON
+            BottomButton(
+              buttonTitle: 'CALCULATE',
+              onTap: () {
+                Calculator cal = Calculator(
+                  height: height,
+                  weight: weight,
+                  gender: selectedGender,
+                  age: age,
+                  activityLevel: activityLevel,
+                );
+                String result = cal.calculateBMR();
+                String information = cal.getInterpretation(activityLevel);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      result: result,
+                      information: information,
+                      bmr: '',
                     ),
                   ),
-                ),
-              ],
+                );
+              },
             ),
-          ),
-
-          /// BIKIN DROPDOWN ACTIVITY
-          
-          
-          
-          
-          BottomButton(
-            buttonTitle: 'CALCULATE',
-            onTap: () {
-              Calculator cal = Calculator(
-                height: height,
-                weight: weight,
-                gender: selectedGender,
-                age: age,
-                activityLevel: activityLevel,
-              );
-              String result = cal.calculateBMR();
-              String information = cal.getInterpretation(activityLevel);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResultPage(       // Buat laman ResultPage di folder /lib/pages/
-                    result: result,
-                    information: information,
-                    bmr: '',
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
